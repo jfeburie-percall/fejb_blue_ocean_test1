@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Initialize') {
       steps {
-        tool(name: 'Ant1.10.1', type: 'Ant')
+        tool 'Ant1.10.1'
       }
     }
     stage('Build') {

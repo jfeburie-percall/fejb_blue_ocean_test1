@@ -3,10 +3,7 @@ pipeline {
   stages {
     stage('Initialize') {
       steps {
-        sh '''echo env.JAVA_HOME = ${env.JAVA_HOME}
-
-
-echo env.ANT_HOME = ${env.ANT_HOME}'''
+        tool(name: 'Ant1.10.1', type: 'Ant')
       }
     }
     stage('Build') {

@@ -4,7 +4,7 @@ pipeline {
     stage('Initialize') {
       steps {
         tool 'Ant1.10.1'
-        echo 'ANT_HOME = ${ANT_HOME}'
+        echo '"ANT_HOME = ${ANT_HOME}"'
       }
     }
     stage('Build') {

@@ -10,11 +10,7 @@ pipeline {
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
 				}
-				if (isUnix()) {
-					echo 'Unix is not supported at this time'
-				} else {
-					bat(/"${ANT_HOME}\bin\ant.bat" -version/)
-				}				
+				bat(/"${ANT_HOME}\bin\ant.bat" -version/)
 			}
 		}
 		stage('Build') {

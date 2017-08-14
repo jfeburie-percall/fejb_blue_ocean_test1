@@ -8,7 +8,7 @@ pipeline {
 		stage('Initialize') {
 			steps {
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
-					echo '${ANT_HOME}'
+					echo ANT_HOME
 				}
 			}
 		}

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="TC DELIVERY PACKAGE BUILDER" default="package.delivery" >
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="ant-contrib-1.0b3.jar" />
+		</classpath>
+	</taskdef>
 	<!-- properties definitions -->
 	<property file="${basedir}/build.properties" />
 	<property file="${basedir}/version.properties" />
@@ -23,11 +28,6 @@
 	<property name="scripts.dir" value="${basedir}/../../SCRIPTS/${project.name}" />	<!-- Path to SCRIPTS folder -->
 	<property environment="env" />
 	<!-- use the Ant-Contrib library to use extra functions like "if" or "for" -->
-	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
-		<classpath>
-			<pathelement location="ant-contrib-1.0b3.jar" />
-		</classpath>
-	</taskdef>
 	<condition property="build.version" value="${env.BUILD_NUMBER}" else="-Unknown">
 		<isset property="env.BUILD_NUMBER"/>
 	</condition>

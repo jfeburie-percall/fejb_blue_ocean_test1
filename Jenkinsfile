@@ -11,7 +11,6 @@ pipeline {
 					echo 'ANT_HOME = ' + ANT_HOME
 					bat(/"$ANT_HOME\bin\ant.bat" -version/)
 				}
-				echo 'ANT_HOME = ' + ANT_HOME
 			}
 		}
 		stage('Build') {

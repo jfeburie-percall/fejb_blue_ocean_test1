@@ -25,7 +25,7 @@
 	<property name="ivy.repository" value="D:/ivy/tcua/${tc.main.version}/${tc.patch}" />			<!-- repository were clean Teamcenter binary files are stored (mandatory) -->
 	<!-- CUSTOM PROPERTIES TO CHANGE FOR EACH PROJECT END -->
 	<property name="dev.dir" value="${basedir}/../../DEVT/${project.name}" />			<!-- Path to DEVT folder -->
-	<property name="delivery.dir" value="${basedir}/../../../build" />	<!-- Path folder where package is built -->
+	<property name="delivery.dir" value="${basedir}/../../build" />	<!-- Path folder where package is built -->
 	<property name="scripts.dir" value="${basedir}/../../SCRIPTS/${project.name}" />	<!-- Path to SCRIPTS folder -->
 	<property environment="env" />
 	<condition property="build.version" value="${env.BUILD_NUMBER}" else="-UnknownBuildNo">

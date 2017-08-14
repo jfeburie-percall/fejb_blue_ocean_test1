@@ -11,7 +11,11 @@ pipeline {
 					echo 'ANT_HOME = ' + ANT_HOME
 					bat(/"$ANT_HOME\bin\ant.bat" -version/)
 				}
-				echo 'env.WORKSPACE = ' + env.WORKSPACE
+				echo 'env.BRANCH_NAME  = ' + BRANCH_NAME
+				echo 'env.BUILD_NUMBER = ' + BUILD_NUMBER
+				echo 'env.JOB_NAME     = ' + JOB_NAME
+				echo 'env.JENKINS_HOME = ' + JENKINS_HOME
+				echo 'env.WORKSPACE    = ' + env.WORKSPACE
 			}
 		}
 		stage('Build') {

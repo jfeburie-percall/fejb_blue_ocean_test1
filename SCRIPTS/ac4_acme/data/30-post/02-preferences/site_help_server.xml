@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<preferences version="10.0">
+  <category name="Interface.Thin Client.General">
+    <category_description></category_description>
+    <preference name="WEB_core_help_server" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>This should be set to the URL of the site&apos;s core TC help page (used to create help::Tc link).</preference_description>
+      <context name="Teamcenter">
+        <value>$TCE_HELP_SERVER/tc_help/index.htm</value>
+      </context>
+    </preference>
+    <preference name="WEB_help_server" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>This should be set to the URL of the site&apos;s Web help page, e.g., http://host:port/tc/help/thin_client_dhtml/book.html (used to create help::Tc Web link) or if you are using the same web server for help and Teamcenter Thin Client, you could just use a relative URL.</preference_description>
+      <context name="Teamcenter">
+        <value>$TCE_HELP_SERVER/tc_help/thin_client_dhtml/book.html</value>
+      </context>
+    </preference>
+  </category>
+</preferences>

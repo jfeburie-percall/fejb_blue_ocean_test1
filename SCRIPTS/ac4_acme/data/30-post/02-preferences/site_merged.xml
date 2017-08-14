@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preferences version="10.0">
+  <category name="General">
+    <category_description></category_description>
+	<!-- CONFIGURATION SPECIFIC DEVELOPMENT -->
+    <preference name="TC_customization_libraries" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <!--<value>libvm</value>-->  			<!-- Required if Vendor Management is installed -->
+        <!--<value>libpspl</value>-->					<!-- ??? -->
+        <!--<value>custom library</value>-->	<!-- Your custom library -->
+      </context>
+    </preference>
+	</category>
+ 
+</preferences>

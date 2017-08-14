@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preferences version="10.0">
+
+  <!-- Category "@PROJECT_NAME@" -->
+  <category name="@PROJECT_NAME@">
+    <category_description></category_description>
+    <preference name="@PROJECT_NAME@.release" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>Release version of @PROJECT_NAME@</preference_description>
+      <context name="Teamcenter">
+        <value>@RELEASE_VERSION@</value>
+      </context>
+    </preference>
+    <preference name="@PROJECT_NAME@.build" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>Build number of @PROJECT_NAME@</preference_description>
+      <context name="Teamcenter">
+        <value>@BUILD_VERSION@</value>
+      </context>
+    </preference>
+  </category>
+</preferences>

@@ -1,0 +1,26 @@
+# Redefine here your custom properties (Override properties in build.xml)
+# examples :
+
+# delivery.dir : Path folder where package is built (optionnal)
+# delivery.dir=C:/Temp
+
+# bmide.dir : BMIDE root folder (modify only the last folder name in the path (optionnal)
+# bmide.dir=${basedir}/../BMIDE/ac4_acme
+
+# tc.main.version : Teamcenter main version : tc10 , tc11 , etc.
+# tc.main.version=tc11
+
+# tc.patch : Teamcenter patch version : tc10.1.7.0 , tc11.2.3.0 ,  etc.
+# tc11.2.3.0
+
+# tc.version : backup file name to cleanup at the end of the Bmide packaging process
+# sometimes bmide generates a ac4_acme_project_tc10000.1.7.zip when creating a package
+# This file has to be removed but the version string has to be specified in order to delete the correct file from the delivery package
+# tc.version=tc11000.2.3
+
+# ivy repository : repository were clean Teamcenter binary files are stored (mandatory)
+# Teamcenter binary files include bmide binaries as well as includes files from a fresh teamcenter installation
+# ivy.repository=D:/ivy/tcua/tc11/tc11.2.3.0
+
+# JRE HOME : LOCAL JRE used to run BMIDE EXECUTABLES (mandatory)
+tc.jre.home=D:/Java/JDK/jdk1.7.0_80

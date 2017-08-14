@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preferences version="10.0">
+  <category name="Interface.Rich Client">
+    <category_description></category_description>
+    <preference name="QRYColumnsShownPref" type="String" array="true" disabled="false" protectionScope="Group" envEnabled="false">
+      <preference_description>Specifies the list of default (Favorite) saved queries used for both Teamcenter Rich/Thin clients. The values of this preference should be the localized query names.</preference_description>
+      <context name="Teamcenter">
+        <!--<value>Custom Query</value>-->
+        <value>General...</value>
+        <value>Item...</value>
+        <value>Item Revision...</value>
+        <value>Dataset...</value>
+        <value>Checked-Out  Dataset...</value>
+      </context>
+    </preference>
+    <preference name="HiddenPerspectives" type="String" array="true" disabled="false" protectionScope="Group" envEnabled="false">
+      <preference_description>Lists hidden Teamcenter perspectives based on user preference. The value listed must be the activity name defined at &quot;org.eclipse.ui.activities&quot; extension point within a given perspective&apos;s plugin.xml.</preference_description>
+      <context name="Teamcenter">
+        <!--<value>ADALicense</value>-->
+        <!--<value>AccessManager</value>-->
+        <value>AppearanceConfiguration</value>
+        <!--<value>AuditManager</value>-->
+        <!--<value>Authorization</value>-->
+        <value>CAEManager</value>
+        <value>CAEStructureDesigner</value>
+        <value>CMViewerClassic</value>
+        <!--<value>ChangeManager</value>-->
+        <!--<value>Classification</value>-->
+        <!--<value>ClassificationAdmin</value>-->
+        <!--<value>CommandSuppression</value>-->
+        <value>DPV Measurements</value>
+        <value>DatabaseUtilities</value>
+        <value>DesignContext</value>
+        <!--<value>IssueManager</value>-->
+        <!--<value>LaunchPad</value>-->
+        <value>LifecycleViewer</value>
+        <value>ManufacturingBOMReconciliation</value>
+        <!--<value>ManufacturingProcessPlanner</value>-->
+        <value>ManufacturingProcessSequencing</value>
+        <!--<value>Multi-StructureManager</value>-->
+        <!--<value>MyTeamcenter</value>-->
+        <value>MyTeamcenterLegacy</value>
+        <!--<value>Organization</value>-->
+        <!--<value>PLMXMLExportImportAdministration</value>-->
+        <value>PartPlanner</value>
+        <value>PlantDesigner</value>
+        <value>PlatformDesigner</value>
+        <!--<value>Project</value>-->
+        <!--<value>QueryBuilder</value>-->
+        <value>RegistryEditor</value>
+        <!--<value>RelationBrowser</value>-->
+        <!--<value>ReportBuilder</value>-->
+        <value>ReportDesigner</value>
+        <value>ReportGenerator</value>
+        <!--<value>ResourceManager</value>-->
+        <!--<value>ScheduleManager</value>-->
+        <value>SetupWizard</value>
+        <!--<value>StructureManager</value>-->
+        <!--<value>SubscriptionMonitor</value>-->
+        <value>Validation</value>
+        <value>ValidationManager</value>
+        <!--<value>VolumeManagement</value>-->
+        <!--<value>WorkflowDesigner</value>-->
+        <!--<value>WorkflowViewer</value>-->
+        <value>eIntegrator</value>
+      </context>
+    </preference>
+  </category>
+  <category name="Workflow">
+    <category_description></category_description>
+    <preference name="CR_allow_alternate_procedures" type="String" array="false" disabled="false" protectionScope="Group" envEnabled="false">
+      <preference_description>Valid values for this preference can be &quot;any&quot;, &quot;Assigned&quot; or &quot;none&quot;. any - New process dialog shows the All/Assigned radio buttons with &quot;All&quot; option pre-selected. Assigned - New process dialog shows the All/Assigned radio buttons with &quot;Assigned&quot; option pre-selected. none - New process dialog does not show the All/Assigned radio buttons. It will populate the process template combobox with the assigned templates. If there are no assigned templates for the group/type in question then the process template combobox will be empty. If you specify &quot;none&quot;, then for a user to initiate a process on an object, you must assign the process template in the Process designer-&gt;Edit-&gt;Template Filter window for that object type.</preference_description>
+      <context name="Teamcenter">
+        <value>Assigned</value>
+      </context>
+    </preference>
+<!--    <preference name="TC_Custom TypeRevision_release_procedure" type="String" array="true" disabled="false" protectionScope="Group" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+		<value>Product Proposal</value>
+		<value>Product Approval</value>
+		<value>Set Temporary Restricted</value>
+		<value>Remove Temporary Restricted</value>
+		<value>Export Delivery Package</value>
+		<value>Admin Remove Status</value>
+      </context>
+    </preference>-->
+  </category>
+</preferences>

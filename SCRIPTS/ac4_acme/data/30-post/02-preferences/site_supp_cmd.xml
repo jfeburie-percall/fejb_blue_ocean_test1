@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preferences version="10.0">
+  <category name="Configuration.Command Suppression">
+    <category_description></category_description>
+    <preference name="Configuration.Command Suppression_NOTREALPREF" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+      </context>
+    </preference>
+	<!-- Classification -->
+    <preference name="com.teamcenter.rac.classification.icm.ICMApplication\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>,preferencesAction</value>
+      </context>
+    </preference>
+    <!-- Manufacturing Process Planner -->
+	<preference name="com.teamcenter.rac.cme.cc.CCApplication\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>,preferencesAction</value>
+      </context>
+    </preference>
+	<!-- Organisation -->
+    <preference name="com.teamcenter.rac.organization.OrganizationApplication\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>,preferencesAction</value>
+      </context>
+    </preference>
+    <!-- Project Administration -->
+	<preference name="com.teamcenter.rac.project.ProjectAdminApplication\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>,preferencesAction</value>
+      </context>
+    </preference>
+    <!-- Structure Manager -->
+    <preference name="com.teamcenter.rac.pse.PSEApplication\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>,newPVariableAction,preferencesAction,effMapAction,com.teamcenter.rac.showbomgrading,createRevRuleAction,modifyIdDisplayRuleAction,com.teamcenter.rac.vendorPartSelectionRule,associateSignalTransmitterAction,sourceTracelinkAction,showProcessVariableAction,com.teamcenter.rac.fixAssociations.fixAllLevels,newGDELinkAction,icIntentAction,removeSignalRedundantAction,viewSupersedureAction,modifyRevRuleAction,com.teamcenter.rac.GCSMode,com.teamcenter.rac.markupEvaluate,removeSignalTargetAction,com.teamcenter.rac.cme.biw.newmfg,removeSignalPVariableAction,com.teamcenter.rac.supercedureToggle,com.teamcenter.rac.gcs,openInVMUAction,com.teamcenter.rac.markupView,targetTracelinkAsTypeAction,ShowResultAction,createImplementedByAction,removeFromWizardAction,newDesignAction,traceabilityReportAction,removeSignalSourceAction,com.teamcenter.rac.sendAdditionalDataTo,com.teamcenter.rac.exportConfiguredNXAssembly,createIdDisplayRuleAction,removeIncrementalChangesAction,targetTracelinkAction,com.teamcenter.rac.markupMode,allHistoryClearSelectedAction,showSupersededAction,removeRealizedByAction,arrangementsAction,incrementalDeleteAction,allHistoryClearAllAction,incrementalRemoveAction,ValidateAction,com.teamcenter.rac.icContextIconLevel,openInUGAction,replacePartAction,showRealizesAction,unattachedShowParentAction,com.teamcenter.rac.runbomgrading,newFolderAction,incrementalCreateICAction,IntermediateDataCaptureAction,com.teamcenter.rac.fixAssociations.fixCurrentLevel,SendtoESAction,com.teamcenter.rac.occEffectMultiple,com.teamcenter.rac.markupDelete,showRedundantAction,replaceComponentAction,showSignalsTransmittedAction,icSplitAction,createRealizedByAction,newSignalAction,viewIdDisplayRuleAction,incrementalAddAction,showSourceAction,ProcessAndChangeConfiguratorAction,icBaselineAction,showRealizedByAction,importRemoteAction,unattachedAttachAction,com.teamcenter.rac.markupApply,removeImplementedByAction,unattachedClearAllAction,newInterfaceGDEAction,disconnectAction,removeSignalTransmitterAction,unattachedClearSelectedAction,showImplementedByAction,incrementalCreateAction,newPartAction,icChangeAction,com.teamcenter.rac.markupApplyAll,com.teamcenter.rac.occEffectActionSingle,exportToConnectionAction,sendToExternalSystemAction,BaselineAction,showSignalsOfPVAction,newFormAction,associateSignalSourceAction,showTransmitterAction,newPSConnectionAction,com.teamcenter.rac.showSuppressedOccs,associateSignalTargetAction,findConnectedToAction,connectAction,associateSignalPVariableAction,showTargetAction,showImplementsAction,com.teamcenter.rac.showPartSolutions,associateSignalRedundantAction,showSignalsReceivedAction,com.teamcenter.rac.sendDataTo,com.teamcenter.rac.icHideRemoveIcons,newGDEAction</value>
+      </context>
+    </preference>
+    <!-- Query Builder -->
+	<preference name="com.teamcenter.rac.querybuilder.QueryBuilderApplication\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>,preferencesAction</value>
+      </context>
+    </preference>
+    <!-- My Teamcenter -->
+    <preference name="com.teamcenter.rac.ui.perspectives.navigatorPerspective\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>newPVariableAction,preferencesAction,externalTraceRptAction,resetPrimaryRepresentation,modifyIdDisplayRuleAction,resumeAction,removeVendorRoleAction,publishCADtoPartAction,publishToDefaultOdsDotDotDotAction,newWorkContextAction,registerItemIdAction,newGDELinkAction,com.teamcenter.rac.newBidPackage,exportRemoteGmsAction,viewRMAction,changeVendorAction,com.teamcenter.rac.updateUsageObject,com.teamcenter.rac.addBidPackageLineItem,multisiteReplicaSyncMenu,cancelSiteCheckoutAction,addBidPackageLineItemAction,manageGlobalAlternatesAction,removeImmunityAction,newDerivedCMAction,ShowResultAction,siteCheckoutAction,replaceInAssnListAction,newSCAction,unpublishFromDefaultOdsDotDotDotAction,importFromConnectionAction,newDesignAction,connectionsAction,com.teamcenter.rac.siteLocalCheckout,newVendorAction,applyAssnListAction,com.teamcenter.rac.sendAdditionalDataTo,newContextCMAction,com.teamcenter.rac.cm.newChangeWizard,createIdDisplayRuleAction,assignWorkContextAction,manageGlobalAlternatesCommand,com.teamcenter.rac.newUsageComponent,addComponentAction,com.teamcenter.rac.addVendorRole,makePrimaryRepresentation,exportOfflineGmsAction,suspendAction,com.teamcenter.rac.issuemanager.reviewIssue,com.teamcenter.rac.edalib.commands.exportCommand,newManufacturerPartAction,com.teamcenter.rac.edalib.commands.importCommand,addBatchPrint,tcgsSearch,newBVRAction,publishODSAction,ValidateAction,newCAEAction,unregisterItemIdAction,com.teamcenter.rac.siteLocalCancelCheckout,newBidPackageAction,siteCheckinAction,openInUGAction,addPartToProductAction,remoteInboxAction,com.teamcenter.rac.customNotes,viewInContextAction,changeOwnershipAction,multisiteSyncComponentAction,publishToDefaultOdsAction,unpublishFromDefaultOdsAction,newScheduleAction,sendRemoteCheckoutAction,com.teamcenter.rac.changeVendor,com.teamcenter.rac.replaceStdNote,exportOfflinePdxAction,exportRemotePLMAction,exportToGMSAction,com.teamcenter.rac.issuemanager.newIssueWizard,undoAction,gdisEditAction,copyProcessAction,newSignalAction,multisiteSyncObjectAction,newAlternateIdAction,unpublishFromSpecificSitesAction,viewmarkupAction,com.teamcenter.rac.standardNotes,purgeAction,makePrimaryAction,publishToPublicationListAction,newECMAction,viewIdDisplayRuleAction,internalTraceRptAction,importSpecAction,viewMSVAction,sendRemoteExportAction,editCalendarAction,ProcessAndChangeConfiguratorAction,com.teamcenter.rac.siteLocalCheckin,unpublishFromPublishedToSitesAction,multisiteSyncAssemblyAction,importRemoteAction,newInterfaceGDEAction,newBO,exportConfigNXAssemblyAction,openInUGAction,newCommercialPartAction,gdisViewAction,showCalendarAction,com.teamcenter.rac.removeVendorRole,com.teamcenter.rac.newVendor,newPartAction,importSpecAction,newCCAction,com.teamcenter.rac.updatePreferredStatus,exportToConnectionAction,BaselineAction,addVendorRoleAction,makeImmuneAction,viewDCAction,newCreateCMAction,abortAction,newPSConnectionAction,skipAction,newConfigContextAction,createAssnListAction,unpublishODSAction,assignFSCsAction,com.teamcenter.rac.newSubprocess,autosetCurrentWCAction,newCAEItemAction,importFromOfflinePackageAction,com.teamcenter.rac.sendDataTo,newGDEAction</value>
+      </context>
+    </preference>
+	<!-- Workflow Designer -->
+    <preference name="com.teamcenter.rac.workflow.processdesigner.ProcessDesignerApplication\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>,preferencesAction</value>
+      </context>
+    </preference>
+	<!-- Workflow Viewer -->
+    <preference name="com.teamcenter.rac.workflow.processviewer.ProcessViewerApplication\\##Customer##\\*\\HIDDEN_COMMANDS" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>,resumeAction,abortAction,preferencesAction,skipAction,com.teamcenter.rac.processviewer.demote,suspendAction</value>
+      </context>
+    </preference>
+  </category>
+</preferences>

@@ -1,0 +1,79 @@
+#----------------------------------------------------------------------------
+#ENVIRONMENT VARIABLES TO BE MODIFIED BEFORE EXECUTING SCRIPT
+#----------------------------------------------------------------------------
+
+#TEAMCENTER ENVIRONMENT VARIABLES :
+$TCEINFODBAUSER=infodba;
+$TCEINFODBAGROUP=dba;
+$TCE_DEFAULT_VOLUME=volume1;
+# $TCE_SMTP_SERVER="smtp.domain.com";
+# $TCE_WEB_SERVER="<server.domain>";
+# $TCE_HELP_SERVER="http://<server.domain>:8080";
+
+#DEBUG MODE ACTIVATION (ON/OFF)
+$DEBUG_MODE="OFF";
+
+#GENERATE SERVER CACHE (Allowed values : "NO", Any other value means "YES"))
+$GENERATE_SERVER_CACHE="YES";
+
+#GENERATE CLIENT CACHE (Allowed values : "NO", Any other value means "YES"))
+$GENERATE_CLIENT_CACHE="YES";
+
+#-------------------------------------
+#CALCULATED VARIABLES (do not modify)
+#-------------------------------------
+$OSNAME = $^O;
+$PROJECT_NAME=ac4_acme;
+$TCEPASSWORDFILE=$ENV{TC_ROOT}."/security/".$PROJECT_NAME."_".$TCEINFODBAUSER.".pwf";
+if ($OSNAME eq "MSWin32")
+{
+	$TCEPASSWORDFILE =~ s/\//\\/g;
+}
+$TCECONNECTSTRING="-u=".$TCEINFODBAUSER." -pf=".$TCEPASSWORDFILE." -g=".$TCEINFODBAGROUP;
+$TCE_BMIDE_DIR=$TCE_SCRIPTS_DIR."/../../BMIDE/".$PROJECT_NAME;
+$TCE_LOG_DIR=$TCE_SCRIPTS_DIR."/output";
+$TCE_SCRIPTS_DATA_DIR=$TCE_SCRIPTS_DIR."/data";
+$TC_LOCALIZATION_DIR=en;
+$TC_TMP_DIR=$TCE_LOG_DIR."/syslog";
+$TC_TMP_DIR_DOS=$TC_TMP_DIR;
+if ($OSNAME eq "MSWin32"){
+	$TC_TMP_DIR_DOS =~ s/\//\\/g;
+}
+$ENV{TC_TMP_DIR}=$TC_TMP_DIR_DOS;
+$IMAN_TMP_DIR=$TCE_LOG_DIR."/syslog";
+$TCE_SCRIPTS_LOG=$TCE_LOG_DIR."/log";
+$TC_KEEP_SYSTEM_LOG=Y;
+$ENV{TC_KEEP_SYSTEM_LOG}=$TC_KEEP_SYSTEM_LOG;
+$IMAN_KEEP_SYSTEM_LOG=Y;
+$ENV{IMAN_KEEP_SYSTEM_LOG}=$IMAN_KEEP_SYSTEM_LOG;
+
+print "---------------------- TEAMCENTER ENVIRONNEMENT ----------------------\n";
+print "TC_ROOT                           = ".$ENV{TC_ROOT}."\n";
+print "TC_DATA                           = ".$ENV{TC_DATA}."\n";
+print "TC_LOCALIZATION_DIR               = ".$TC_LOCALIZATION_DIR."\n";
+print "------------------------ ".$PROJECT_NAME." INSTALL --------------------------\n";
+print "PROJECT_NAME                      = ".$PROJECT_NAME."\n";
+print "TCE_SCRIPTS_DIR                   = ".$TCE_SCRIPTS_DIR."\n";
+print "TCE_SCRIPTS_DATA_DIR              = ".$TCE_SCRIPTS_DATA_DIR."\n";
+print "TCE_BMIDE_DIR                     = ".$TCE_BMIDE_DIR."\n";
+print "TCE_LOG_DIR                       = ".$TCE_LOG_DIR."\n";
+print "TCEINFODBAUSER                    = ".$TCEINFODBAUSER."\n";
+print "TCEPASSWORDFILE                   = ".$TCEPASSWORDFILE."\n";
+print "TCEINFODBAGROUP                   = ".$TCEINFODBAGROUP."\n";
+print "TCE_DEFAULT_VOLUME                = ".$TCE_DEFAULT_VOLUME."\n";
+# print "TCE_SMTP_SERVER                   = ".$TCE_SMTP_SERVER."\n";
+# print "TCE_WEB_SERVER                    = ".$TCE_WEB_SERVER."\n";
+# print "TCE_HELP_SERVER                   = ".$TCE_HELP_SERVER."\n";
+print "---------------------------- LOG FILES -------------------------------\n";
+print "OSNAME                            = ".$OSNAME."\n";
+print "TC_TMP_DIR                        = ".$ENV{TC_TMP_DIR}."\n";
+print "TCE_SCRIPTS_LOG                   = ".$TCE_SCRIPTS_LOG."\n";
+print "----------------------------- OPTIONS --------------------------------\n";
+print "DEBUG MODE                        = ".$DEBUG_MODE."\n";
+#print "GENERATE SERVER CACHE             = ".$GENERATE_SERVER_CACHE."\n";
+#print "GENERATE CLIENT CACHE             = ".$GENERATE_CLIENT_CACHE."\n";
+print "CONTINUE IMMEDIATELY              = ".$CONTINUE_Y_N."\n";
+print "PRE-SELECTED MODULE               = ".$MODULE_2_EXEC."\n";
+print "PRE-SELECTED SCRIPT               = ".$SCRIPT_2_EXEC."\n";
+
+1;

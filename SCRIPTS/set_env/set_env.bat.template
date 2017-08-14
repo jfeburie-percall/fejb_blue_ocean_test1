@@ -1,0 +1,19 @@
+REM echo TC Environment Initialization Startup
+REM echo COMPUTERNAME=%COMPUTERNAME%
+if %COMPUTERNAME% == PRODSERVER (
+	REM PRODUCTION SERVER PATHS (Replace PRODSERVER by your Production Server host name)
+	SET TC_ROOT=D:\Siemens\TC11\tcroot
+	SET TC_DATA=D:\Siemens\TC11\tcdata
+) else if %COMPUTERNAME% == QUALSERVER (
+	REM QUALITY OR PRE-PROD SERVER PATHS (Replace QUALSERVER by your Pre-Production or Quality Server host name)
+	SET TC_ROOT=D:\Siemens\TC11\tcroot
+	SET TC_DATA=D:\Siemens\TC11\tcdata
+) else (
+	REM PUT Your DEV TC PATHS HERE
+	SET TC_ROOT=D:\Siemens\TC11\tcroot
+	SET TC_DATA=D:\Siemens\TC11\tcdata
+)
+
+
+call %TC_DATA%\tc_profilevars
+REM echo TC Environment Initialization End

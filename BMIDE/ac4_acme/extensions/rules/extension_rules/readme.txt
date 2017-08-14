@@ -1,0 +1,1 @@
+1 file per extension rule definition

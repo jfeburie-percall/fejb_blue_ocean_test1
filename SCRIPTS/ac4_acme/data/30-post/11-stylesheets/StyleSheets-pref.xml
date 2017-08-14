@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preferences version="10.0">
+  <category name="General">
+    <category_description>Teamcenter Preferences</category_description>
+
+<!-- Business_Object Summary -->
+<!--    <preference name="Business_Object.SUMMARYRENDERING" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="true">
+      <preference_description>Registers the Summary stylesheet for Business_Object objects. (XMLRenderingStyleSheet Dataset name)</preference_description>
+      <context name="Teamcenter">
+        <value>XRT_Summary_Dataset_Name</value>
+      </context>
+    </preference>
+    <preference name="XRT_Summary_Dataset_Name.SUMMARY_REGISTEREDTO" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="true">
+      <preference_description>Indicates the type to which the Business_Object Summary stylesheet can be applied.</preference_description>
+	  <context name="Teamcenter">
+        <value>Business_Object</value>
+      </context>
+    </preference>-->
+
+<!-- Business_Object Form -->
+<!--    <preference name="Business_Object.FORMRENDERING" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="true">
+      <preference_description>Registers the Form stylesheet for Business_Object objects. (XMLRenderingStyleSheet Dataset name)</preference_description>
+      <context name="Teamcenter">
+        <value>XRT_Form_Dataset_Name</value>
+      </context>
+    </preference>
+    <preference name="XRT_Form_Dataset_Name.FORM_REGISTEREDTO" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="true">
+      <preference_description>Indicates the type to which the Business_Object Form stylesheet can be applied.</preference_description>
+	  <context name="Teamcenter">
+        <value>Business_Object</value>
+      </context>
+    </preference>-->
+
+<!-- Business_Object Create -->
+<!--    <preference name="Business_Object.CREATERENDERING" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="true">
+      <preference_description>Registers the create stylesheet for Business_Object objects. (XMLRenderingStyleSheet Dataset name)</preference_description>
+      <context name="Teamcenter">
+        <value>XRT_Form_Dataset_Name</value>
+      </context>
+    </preference>
+    <preference name="XRT_Form_Dataset_Name.CREATE_REGISTEREDTO" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="true">
+      <preference_description>Indicates the type to which the Business_Object create stylesheet can be applied.</preference_description>
+	  <context name="Teamcenter">
+        <value>Business_Object</value>
+      </context>
+    </preference>-->
+
+<!-- Business_Object Property -->
+<!--    <preference name="Business_Object.RENDERING" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="true">
+      <preference_description>Registers the property stylesheet for Business_Object objects. (XMLRenderingStyleSheet Dataset name)</preference_description>
+      <context name="Teamcenter">
+        <value>XRT_Form_Dataset_Name</value>
+      </context>
+    </preference>
+    <preference name="XRT_Form_Dataset_Name.REGISTEREDTO" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="true">
+      <preference_description>Indicates the type to which the Business_Object property stylesheet can be applied.</preference_description>
+	  <context name="Teamcenter">
+        <value>Business_Object</value>
+      </context>
+    </preference>-->
+
+	</category>	
+</preferences>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PRE TC DELIVERY PACKAGE BUILDER" default="package.delivery.pre.build" >
+	<property name="itk.prj.dir" value="${basedir}/../DEVT/itk"/>
+	<property name="itk.sln.name" value="${project.name}.sln"/>
+    <import file="${basedir}/prebuild/build.itk.win.xml" />
+    <import file="${basedir}/prebuild/build.itk.unix.xml" />
+
+	<target name="package.delivery.pre.build">
+		<antcall target="package.delivery.pre.build.itk.win" />
+		<!-- <antcall target="package.delivery.pre.build.itk.unix" /> -->
+	</target>
+
+	<!-- ECHO OS NAME ARCH VERSION -->
+	<target name="os.check">
+		<condition property="os.family.win">
+			<os family="windows"/>
+		</condition>
+		<condition property="os.family.unix">
+			<os family="unix"/>
+		</condition>
+		<if>
+			<istrue value="${os.family.win}"/>
+			<then>
+				<property name="os.family" value="windows"/>
+			</then>
+		</if>
+		<if>
+			<istrue value="${os.family.unix}"/>
+			<then>
+				<property name="os.family" value="unix"/>
+			</then>
+		</if>
+		<!-- <echo message="OS Family is:       ${os.family}" /> -->
+		<!-- <echo message="OS Name is:         ${os.name}" /> -->
+		<!-- <echo message="OS Architecture is: ${os.arch}" /> -->
+		<!-- <echo message="OS Version is:      ${os.version}" /> -->
+	</target> 
+
+</project>

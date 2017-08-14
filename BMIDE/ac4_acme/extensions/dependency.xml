@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<TcBusinessDataIncludes currentTemplateVersion="11.2_4" displayName="ACME" enableOpsDataDeploy="true" guid="8811758BBD4CF2C765573B8FD3C2441B" isDescriptionMandatory="false" name="ac4acme" optional="true" prefixes="AC4_" teamcenterTemplate="false">
+    <include file="foundation_template.xml"/>
+</TcBusinessDataIncludes>

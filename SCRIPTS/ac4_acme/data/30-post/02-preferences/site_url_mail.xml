@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<preferences version="10.0">
+  <category name="Configuration.Mail Gateway">
+    <category_description></category_description>
+    <preference name="Mail_server_name" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>Information about the mail gateway server.
+        This is a site preference.
+        It can be set to either a mail server name or to a numeric IP address.
+        The mail server name should be a machine running a send mail daemon.
+        Leaving it as &quot;your mail server machine&quot; while the &quot;Mail_OSMail_activated&quot; preference is true may give you errors telling you to set this preference if you try to use the &quot;Send&quot; command.</preference_description>
+      <context name="Teamcenter">
+        <value>$TCE_SMTP_SERVER</value>
+      </context>
+    </preference>
+  </category>
+  <category name="General">
+    <category_description></category_description>
+    <preference name="RICH_CLIENT_MARKER_ID" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>This preference is used for creating URL for invoking Rich Client. The URL created for rich client should be of the format http://web_server:port/cgi-bin/portal?-s=TCSession&amp;-o=ObjectUID&amp;-sid=serverMarker. The &quot;serverMarker&quot; in the example is read from RICH_CLIENT_MARKER_ID preference.</preference_description>
+      <context name="Teamcenter">
+        <value>http://$TCE_WEB_SERVER/tc/launchapp?-attach=true&amp;</value>
+      </context>
+    </preference>
+  </category>
+  <category name="Interface.Thin Client.General">
+    <category_description></category_description>
+    <preference name="WEB_default_site_deployed_app_name" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>Defines the name of the deployed application.
+        Application name is chosen at installation time; the default name is &apos;tc&apos;. It appears in Thin Client URLs like this: http://server:port/&lt;app_name&gt;/webclient.
+      </preference_description>
+      <context name="Teamcenter">
+        <value>tc</value>
+      </context>
+    </preference>
+      <preference name="WEB_default_site_server" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+    <preference_description>Defines the URL of the default site server used for mail notifications (CR-Notify) and other server oriented tasks.
+        The format is for instance &quot;www.foo.com:8080&quot;.
+      </preference_description>
+      <context name="Teamcenter">
+        <value>$TCE_WEB_SERVER</value>
+      </context>
+    </preference>
+    <preference name="PERMALINK_server" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>Defines the server:port for Permalink.
+      </preference_description>
+      <context name="Teamcenter">
+        <value>$TCE_WEB_SERVER</value>
+      </context>
+    </preference>
+  </category>
+</preferences>

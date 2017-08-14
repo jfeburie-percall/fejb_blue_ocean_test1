@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preferences version="10.0">
+  <category name="General">
+    <category_description></category_description>
+<!--***** PREFERENCES PAR TYPE D ARTICLE *****-->
+<!--PREFERENCES ARTICLE CommercialPart-->
+<!--    <preference name="CommercialPart Revision_PseudoFolder" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+          <preference_description>Specifies the list of properties that can be displayed as a pseudo-folder under a node for CommercialPart Revision object. </preference_description>
+          <context name="Teamcenter">
+            <value>vendors</value>
+            <value>vendorparts</value>
+          </context>
+    </preference>-->
+<!--PREFERENCES ARTICLE ManufacturerPart-->
+<!--    <preference name="ManufacturerPart Revision_PseudoFolder" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+          <preference_description>Specifies the list of properties that can be displayed as a pseudo-folder under a node for ManufacturerPart Revision object. </preference_description>
+          <context name="Teamcenter">
+          </context>
+    </preference>-->
+<!--PREFERENCES ARTICLE ($custom_item_type)-->
+<!--    <preference name="($custom_item_type)_DefaultChildProperties" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>List of properties that can be used as children for the indicated type i.e. Item. The format of the preference follows: &lt;TypeName&gt;_DefaultChildProperties=my_property. For proxy link integration, add external_apps to this list.</preference_description>
+      <context name="Teamcenter">
+        <value>revision_list</value>
+        <value>IMAN_reference</value>
+      </context>
+    </preference>
+    <preference name="($custom_item_type)_PseudoFolder" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>Liste des relations affichees sous forme de pseudo-folder</preference_description>
+      <context name="Teamcenter">
+      </context>
+    </preference>
+    <preference name="($custom_item_type)_default_relation" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>Specifies the relation that has to be created when an object is pasted under an -object type- . The relation specified for this preference will be the default relation that will be created between the source and the target -object type-.</preference_description>
+      <context name="Teamcenter">
+        <value>IMAN_reference</value>
+      </context>
+    </preference>
+    <preference name="($custom_item_type)Revision_DefaultChildProperties" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>List of properties that can be used as children for the indicated type i.e. ItemRevision. 
+NOTE: For proxy link integration add &quot;external_apps&quot; to this list. The format of the preference follows: &lt;TypeName&gt;_DefaultChildProperties=my_property.</preference_description>
+      <context name="Teamcenter">
+        <value>IMAN_specification</value>
+		<value>release_status_list</value>
+		<value>structure_revisions</value>
+      </context>
+    </preference>
+    <preference name="($custom_item_type)Revision_PseudoFolder" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>Liste des relations affichees sous forme de pseudo-folder</preference_description>
+      <context name="Teamcenter">
+      </context>
+    </preference>
+	<preference name="($custom_item_type)Revision_default_relation" type="String" array="false" disabled="false" protectionScope="Site" envEnabled="false">
+		<preference_description>Specifies the relation that has to be created when an object is pasted under a DMTemplateRevision. The relation specified for this preference will be the default relation that will be created between the source and the target DMTemplateRevision.</preference_description>
+		<context name="Teamcenter">
+			<value>IMAN_specification</value>
+		</context>
+	</preference>
+    <preference name="($custom_item_type)_first_rev_id" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>A</value>
+      </context>
+    </preference>-->
+  </category>
+</preferences>

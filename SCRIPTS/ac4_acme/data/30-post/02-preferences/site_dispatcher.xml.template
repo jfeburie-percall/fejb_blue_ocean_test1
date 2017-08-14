@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preferences version="10.0">
+  <category name="General">
+    <category_description></category_description>
+    <preference name="ETS.ITEMREVTYPES.SIEMENS.PLMXML_IMPORT_EXPORT" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>*</value>
+      </context>
+    </preference>	
+    <preference name="ETS.DATASETTYPES.UGS.UPDATEOFFICE" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>MSWord</value>
+        <value>MSWordX</value>
+        <value>MSExcel</value>
+        <value>MSExcelX</value>
+        <value>MSPowerPoint</value>
+        <value>MSPowerPointX</value>
+      </context>
+    </preference>
+    <preference name="ETS.DATASETTYPES.UGS.DELIVERYPACKAGE" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+        <value>*</value>
+      </context>
+    </preference>
+    <preference name="ETS.PROVIDERS" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description>This preference lists the available providers of translators to show provider filters in AdminConsole and list of available providers in SingleSelection.</preference_description>
+      <context name="Teamcenter">
+        <value>SIEMENS</value>
+        <value>UGS</value>
+      </context>
+    </preference>
+    <preference name="ETS.TRANSLATORS.UGS" type="String" array="true" disabled="false" protectionScope="Site" envEnabled="false">
+      <preference_description></preference_description>
+      <context name="Teamcenter">
+		<value>updateoffice</value>
+		<value>deliverypackage</value>
+      </context>
+    </preference>
+
+  </category>
+</preferences>

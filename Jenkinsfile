@@ -9,11 +9,10 @@ pipeline {
 		stage('Initialize') {
 			steps {
 				script {
-					echo 'ANT_HOME = '
 					withEnv( ["ANT_HOME=${tool antVersion}"] ) {
-						echo ANT_HOME
+						echo 'ANT_HOME = ' + ANT_HOME
 					}
-					echo 'ANT_HOME2 = ' + ${ANT_HOME2}
+					echo 'ANT_HOME2 = ' + ANT_HOME2
 				}
 			}
 		}

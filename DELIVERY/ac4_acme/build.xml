@@ -16,7 +16,7 @@
 	<property name="tc.main.version" value="tc11" /> 										<!-- Teamcenter main version : tc10 , tc11 , etc. -->
 	<property name="tc.patch" value="tc11.2.3.0" /> 										<!-- Teamcenter patch version : tc10.1.7.0 , tc11.2.3.0 ,  etc. -->
 	<property name="tc.version" value="tc11000.2.3"/> 										<!-- backup file name to cleanup at the end of the Bmide packaging process -->
-	<property name="ivy.repository=D:/ivy/tcua/${tc.main.version}/${tc.patch}" />			<!-- repository were clean Teamcenter binary files are stored (mandatory) -->
+	<property name="ivy.repository" value="D:/ivy/tcua/${tc.main.version}/${tc.patch}" />			<!-- repository were clean Teamcenter binary files are stored (mandatory) -->
 	<!-- CUSTOM PROPERTIES TO CHANGE FOR EACH PROJECT END -->
 	<property name="dev.dir" value="${basedir}/../../DEVT/${project.name}" />			<!-- Path to DEVT folder -->
 	<property name="delivery.dir" value="${basedir}/../../../build" />	<!-- Path folder where package is built -->
@@ -248,7 +248,7 @@
 			<istrue value="${bmide.backup.archive.file.exist}"/>
 			<then>
 				<echo>suppress ${bmide.backup.archive.file} file</echo>
-				<delete verbose="true" file="${bmide.backup.archive.file.path}/${bmide.backup.archive.file}" />-->
+				<delete verbose="true" file="${bmide.backup.archive.file.path}/${bmide.backup.archive.file}" />
 			</then>
 		</if>
 	</target>

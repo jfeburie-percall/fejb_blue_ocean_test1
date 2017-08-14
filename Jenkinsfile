@@ -1,7 +1,7 @@
 pipeline {
 	environment {
 		def antVersion = 'Ant1.10.1'
-		ANT_HOME2=tool antVersion
+		ANT_HOME2 = ${tool antVersion}
 	}
 
 	agent any

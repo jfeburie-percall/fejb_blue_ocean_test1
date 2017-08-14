@@ -25,7 +25,7 @@ pipeline {
 					bat(/"$ANT_HOME\bin\ant.bat" -file "$env.WORKSPACE\DELIVERY\ac4_acme\build.xml"  && exit %%ERRORLEVEL%%/)
 				}
 				echo 'Build Complete, Archiving Artifacts to Jenkins'
-				archiveArtifacts artifacts: /$env.WORKSPACE\..\build\*.zip/
+				archiveArtifacts artifacts: ..\build\*.zip
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 pipeline {
 	environment {
-		def antVersion = 'Ant1.10.1'
+		def antVersion = 'Ant1.9.9'
 	}
 
 	agent any

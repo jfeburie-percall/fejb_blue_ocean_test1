@@ -1,19 +1,20 @@
 pipeline {
 	environment {
 		def antVersion = 'Ant1.10.1'
-		ANT_HOME2 = ${tool antVersion}
 	}
 
 	agent any
 	stages {
 		stage('Initialize') {
 			steps {
-				script {
-					withEnv( ["ANT_HOME=${tool antVersion}"] ) {
-						echo 'ANT_HOME = ' + ANT_HOME
-					}
-					echo 'ANT_HOME2 = ' + ANT_HOME2
+				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
+					echo 'ANT_HOME = ' + ANT_HOME
 				}
+				if (isUnix()) {
+					echo 'Unix is not supported at this time'
+				} else {
+					bat(/"${ANT_HOME}\bin\ant.bat" -version/)
+				}				
 			}
 		}
 		stage('Build') {

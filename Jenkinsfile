@@ -23,7 +23,7 @@ pipeline {
 				echo 'Starting Build'
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
-					bat(/"$ANT_HOME\bin\ant.bat" -version/)
+					bat(/"$ANT_HOME\bin\ant.bat -file $env.WORKSPACE\ci\build.xml && exit %%ERRORLEVEL%%"/)
 				}
 				echo 'Build Complete'
 			}

@@ -24,7 +24,8 @@ pipeline {
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					bat(/"$ANT_HOME\bin\ant.bat" -file "$env.WORKSPACE\DELIVERY\ac4_acme\build.xml"  && exit %%ERRORLEVEL%%/)
 				}
-				echo 'Build Complete'
+				echo 'Build Complete, Archiving Artifacts to Jenkins'
+				archiveArtifacts artifacts: '**/build/*.zip'
 			}
 		}
 	}

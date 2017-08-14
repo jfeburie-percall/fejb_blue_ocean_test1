@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="TC DELIVERY PACKAGE BUILDER" default="package.delivery" >
+	<!-- use the Ant-Contrib library to use extra functions like "if" or "for" -->
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
 			<pathelement location="ant-contrib-1.0b3.jar" />
@@ -27,9 +28,11 @@
 	<property name="delivery.dir" value="${basedir}/../../../build" />	<!-- Path folder where package is built -->
 	<property name="scripts.dir" value="${basedir}/../../SCRIPTS/${project.name}" />	<!-- Path to SCRIPTS folder -->
 	<property environment="env" />
-	<!-- use the Ant-Contrib library to use extra functions like "if" or "for" -->
-	<condition property="build.version" value="${env.BUILD_NUMBER}" else="-Unknown">
+	<condition property="build.version" value="${env.BUILD_NUMBER}" else="-UnknownBuildNo">
 		<isset property="env.BUILD_NUMBER"/>
+	</condition>
+	<condition property="build.branch" value="${env.BRANCH_NAME}" else="-UnknownBranch">
+		<isset property="env.BRANCH_NAME"/>
 	</condition>
 	<tstamp>
 		<format property="log_timestamp" pattern="yyyy-MM-dd_HH-mm-ss" />
@@ -37,7 +40,7 @@
 
 	<!-- Main: Construction du package de livraison	-->
 	<target name="package.delivery" depends="package.delivery.build.infos" >
-		<property name="project.full.name" value="${project.name}-R${release.version}-${build.date}-b${build.version}" />
+		<property name="project.full.name" value="${project.name}-R${release.version}-${build.date}-b${build.version}-${build.branch}" />
 		<delete dir="${delivery.dir}" />
 		<mkdir dir="${delivery.dir}/${project.full.name}" />
 		<!-- Download and unzip teamcenter libs locally -->

@@ -10,7 +10,7 @@ pipeline {
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
 				}
-				bat(/"${ANT_HOME}\bin\ant.bat" -version/)
+				bat(/"ANT_HOME\bin\ant.bat" -version/)
 			}
 		}
 		stage('Build') {

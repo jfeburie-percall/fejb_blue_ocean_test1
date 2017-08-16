@@ -52,7 +52,7 @@ pipeline {
 			echo 'Notifying Success to Bitbucket'
 			bitbucketStatusNotify(buildState: 'SUCCESSFUL')
 			echo 'Notifying Success to Developers'
-			notifyBuild(buildState: 'SUCCESSFUL')
+			notifyBuild('SUCCESSFUL')
 		}
 //		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.
@@ -93,10 +93,12 @@ def notifyBuild(String buildStatus = 'STARTED') {
 	
 //	hipchatSend (color: color, notify: true, message: summary)
 	
-	emailext (
-		subject: subject,
-		body: details,
-		recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-	)
+	if (buildStatus != 'STARTED') {
+		emailext (
+			subject: subject,
+			body: details,
+			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+		)
+	}
  }
 

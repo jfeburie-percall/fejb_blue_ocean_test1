@@ -8,6 +8,7 @@ pipeline {
 		stage('Initialize') {
 			steps {
 				bitbucketStatusNotify(buildState: 'INPROGRESS')
+				notifyStarted()
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
 					bat(/"$ANT_HOME\bin\ant.bat" -version/)
@@ -55,4 +56,15 @@ pipeline {
 			// Only run if the current Pipeline has an "aborted" status, usually due to the Pipeline being manually aborted. Typically denoted in the web UI with a gray indication
 //		}
 	}
+
+	def notifyStarted() {
+		// send to email
+		emailext ( 
+			subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'", 
+			body: """<p>STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+			<p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>""",
+			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+		)
+	}
+
 }

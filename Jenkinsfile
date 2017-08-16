@@ -35,13 +35,13 @@ pipeline {
 //		always {
 			// Run regardless of the completion status of the Pipeline run.
 //		}
-//		changed {
+		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
-//		}
+			echo 'Notifying Success to Developers'
+			notifyBuild('SUCCESSFUL')
+		}
 		failure {
 			// Only run if the current Pipeline has a "failed" status, typically denoted in the web UI with a red indication.
-			echo 'Notifying Failure to Bitbucket'
-			bitbucketStatusNotify(buildState: 'FAILED')
 			echo 'Notifying Failure to Developers'
 			notifyBuild('FAILED')
 		}
@@ -51,8 +51,6 @@ pipeline {
 			archiveArtifacts artifacts: 'build/*.zip'
 			echo 'Notifying Success to Bitbucket'
 			bitbucketStatusNotify(buildState: 'SUCCESSFUL')
-			echo 'Notifying Success to Developers'
-			notifyBuild('SUCCESSFUL')
 		}
 //		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.
@@ -71,7 +69,7 @@ def notifyBuild(String buildStatus = 'STARTED') {
 	// Default values
 	def colorName = 'RED'
 	def colorCode = '#FF0000'
-	def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+	def subject_start = 'Build Failed in Jenkins'
 	def summary = "${subject} (${env.BUILD_URL})"
 	def details = """<p>${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
 	<p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>"""
@@ -83,15 +81,19 @@ def notifyBuild(String buildStatus = 'STARTED') {
 	} else if (buildStatus == 'SUCCESSFUL') {
 	color = 'GREEN'
 	colorCode = '#00FF00'
+	subject_start = 'Jenkins Build is back to normal'
 	} else {
 	color = 'RED'
 	colorCode = '#FF0000'
 	}
+	def subject = "${subject_start}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 	
 	// Send notifications
 //	slackSend (color: colorCode, message: summary)
 	
 //	hipchatSend (color: color, notify: true, message: summary)
+	echo 'Notifying Build Status to Bitbucket'
+	bitbucketStatusNotify(buildState: buildStatus)
 	
 	if (buildStatus != 'STARTED') {
 		emailext (
@@ -100,5 +102,5 @@ def notifyBuild(String buildStatus = 'STARTED') {
 			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
 		)
 	}
- }
+}
 

@@ -29,25 +29,25 @@ pipeline {
 		}
 	}
 	post {
-		always {
+//		always {
 			// Run regardless of the completion status of the Pipeline run.
-		}
-		changed {
+//		}
+//		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
-		}
-		failure {
+//		}
+//		failure {
 			// Only run if the current Pipeline has a "failed" status, typically denoted in the web UI with a red indication.
-		}
+//		}
 		success {
 			// Only run if the current Pipeline has a "success" status, typically denoted in the web UI with a blue or green indication.
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
 		}
-		unstable {
+//		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.
-		}
-		aborted {
+//		}
+//		aborted {
 			// Only run if the current Pipeline has an "aborted" status, usually due to the Pipeline being manually aborted. Typically denoted in the web UI with a gray indication
-		}
+//		}
 	}
 }

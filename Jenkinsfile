@@ -9,7 +9,7 @@ pipeline {
 			steps {
 				bitbucketStatusNotify(buildState: 'INPROGRESS')
 				echo 'Notifying Starting to Developers'
-				notifyBuild('STARTED')
+				notifyBuild('STARTED', true, true, 'Jenkins Build is Starting')
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
 					bat(/"$ANT_HOME\bin\ant.bat" -version/)
@@ -38,19 +38,19 @@ pipeline {
 		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
 			echo 'Notifying Success to Developers'
-			notifyBuild('SUCCESSFUL')
+			notifyBuild('SUCCESSFUL', false, true, 'Jenkins Build is back to normal')
 		}
 		failure {
 			// Only run if the current Pipeline has a "failed" status, typically denoted in the web UI with a red indication.
 			echo 'Notifying Failure to Developers'
-			notifyBuild('FAILED')
+			notifyBuild('FAILED', true, true, 'Build Failed in Jenkins')
 		}
 		success {
 			// Only run if the current Pipeline has a "success" status, typically denoted in the web UI with a blue or green indication.
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
 			echo 'Notifying Success to Bitbucket'
-			bitbucketStatusNotify(buildState: 'SUCCESSFUL')
+			notifyBuild('SUCCESSFUL', true, true, 'Jenkins Build is Successfull')
 		}
 //		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.
@@ -62,14 +62,18 @@ pipeline {
 
 }
 
-def notifyBuild(String buildStatus = 'STARTED') {
+def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket = true , NotifyEmail = false , String EmailSubjectStart = 'Build Failed in Jenkins') {
 	// build status of null means successful
-	buildStatus =  buildStatus ?: 'SUCCESSFUL'
+	buildStatus       = buildStatus ?: 'SUCCESSFUL'
+	NotifyBitbucket   = NotifyBitbucket ?: true
+	NotifyEmail       = NotifyEmail ?: false
+	EmailSubjectStart = EmailSubjectStart ?: 'Build Failed in Jenkins'
 	
 	// Default values
 	def colorName = 'RED'
 	def colorCode = '#FF0000'
-	def subject_start = 'Build Failed in Jenkins'
+	def subject = "${EmailSubjectStart}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+	def summary = "${subject} (${env.BUILD_URL})"
 	def details = """<p>${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
 	<p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>"""
 	
@@ -80,22 +84,22 @@ def notifyBuild(String buildStatus = 'STARTED') {
 	} else if (buildStatus == 'SUCCESSFUL') {
 	color = 'GREEN'
 	colorCode = '#00FF00'
-	subject_start = 'Jenkins Build is back to normal'
 	} else {
 	color = 'RED'
 	colorCode = '#FF0000'
 	}
-	def subject = "${subject_start}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
-	def summary = "${subject} (${env.BUILD_URL})"
 	
 	// Send notifications
 //	slackSend (color: colorCode, message: summary)
 	
 //	hipchatSend (color: color, notify: true, message: summary)
-	echo 'Notifying Build Status to Bitbucket'
-	bitbucketStatusNotify(buildState: buildStatus)
+
+	if (NotifyBitbucket == true) {
+		echo 'Notifying Build Status to Bitbucket'
+		bitbucketStatusNotify(buildState: buildStatus)
+	}
 	
-	if (buildStatus != 'STARTED') {
+	if (NotifyEmail == true) {
 		emailext (
 			subject: subject,
 			body: details,

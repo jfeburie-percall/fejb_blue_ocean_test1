@@ -7,6 +7,7 @@ pipeline {
 	stages {
 		stage('Initialize') {
 			steps {
+				bitbucketStatusNotify(buildState: 'INPROGRESS')
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
 					bat(/"$ANT_HOME\bin\ant.bat" -version/)
@@ -35,13 +36,17 @@ pipeline {
 //		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
 //		}
-//		failure {
+		failure {
 			// Only run if the current Pipeline has a "failed" status, typically denoted in the web UI with a red indication.
-//		}
+			echo 'Notifying Failure to Bitbucket'
+			bitbucketStatusNotify(buildState: 'FAILED')
+		}
 		success {
 			// Only run if the current Pipeline has a "success" status, typically denoted in the web UI with a blue or green indication.
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
+			echo 'Notifying Success to Bitbucket'
+			bitbucketStatusNotify(buildState: 'SUCCESSFUL')
 		}
 //		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.

@@ -37,7 +37,6 @@ pipeline {
 //		}
 		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
-			echo 'post / changed'
 			echo 'Notifying Back to normal to Developers'
 			notifyBuild('SUCCESSFUL', false, true, 'Jenkins Build is back to normal')
 		}
@@ -48,7 +47,6 @@ pipeline {
 		}
 		success {
 			// Only run if the current Pipeline has a "success" status, typically denoted in the web UI with a blue or green indication.
-			echo 'post / success'
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
 			echo 'Notifying Success to Developers'
@@ -81,7 +79,9 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyEmail , 
 	def subject = "${EmailSubjectStart}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 	def summary = "${subject} (${env.BUILD_URL})"
 	def details = """<p>${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
-	<p>Check console output at "<a href="${env.BUILD_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>"</p>"""
+	<p>Check console output at "<a href="${env.RUN_DISPLAY_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}] Console</a>"</p>
+	<p>View Changes at "<a href="${env.RUN_CHANGES_DISPLAY_URL}">${env.JOB_NAME} [${env.BUILD_NUMBER}] Changes</a>"</p>
+	<p>Link to the Job Homepage at "<a href="${env.JOB_DISPLAY_URL}">${env.JOB_NAME} Homepage</a>"</p>"""
 	
 	// Override default values based on build status
 	if (buildStatus == 'STARTED') {

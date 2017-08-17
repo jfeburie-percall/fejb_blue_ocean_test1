@@ -9,7 +9,7 @@ pipeline {
 			steps {
 				bitbucketStatusNotify(buildState: 'INPROGRESS')
 				echo 'Notifying Starting to Developers'
-//				notifyBuild('STARTED', true, true, 'Jenkins Build is Starting')
+				notifyBuild('STARTED', true, false, 'Jenkins Build is Starting')
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
 					bat(/"$ANT_HOME\bin\ant.bat" -version/)
@@ -51,8 +51,8 @@ pipeline {
 			echo 'post / success'
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
-//			echo 'Notifying Success to Developers'
-//			notifyBuild('SUCCESSFUL', false, false, 'Jenkins Build is Successfull')
+			echo 'Notifying Success to Developers'
+			notifyBuild('SUCCESSFUL', true, false, 'Jenkins Build is Successfull')
 		}
 //		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.

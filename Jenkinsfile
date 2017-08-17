@@ -49,7 +49,7 @@ pipeline {
 			// Only run if the current Pipeline has a "success" status, typically denoted in the web UI with a blue or green indication.
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
-			echo 'Notifying Success to Developers'
+//			echo 'Notifying Success to Developers'
 //			notifyBuild('SUCCESSFUL', false, false, 'Jenkins Build is Successfull')
 		}
 //		unstable {
@@ -64,10 +64,10 @@ pipeline {
 
 def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket = true , NotifyEmail = false , String EmailSubjectStart = 'Build Failed in Jenkins') {
 	// build status of null means successful
-	buildStatus       = buildStatus ?: 'SUCCESSFUL'
-	NotifyBitbucket   = NotifyBitbucket ?: true
-	NotifyEmail       = NotifyEmail ?: false
-	EmailSubjectStart = EmailSubjectStart ?: 'Build Failed in Jenkins'
+	def buildStatus       = buildStatus ?: 'SUCCESSFUL'
+	def NotifyBitbucket   = NotifyBitbucket ?: true
+	def NotifyEmail       = NotifyEmail ?: false
+	def EmailSubjectStart = EmailSubjectStart ?: 'Build Failed in Jenkins'
 	echo 'buildStatus       = ' + buildStatus
 	echo 'NotifyBitbucket   = ' + NotifyBitbucket
 	echo 'NotifyEmail       = ' + NotifyEmail

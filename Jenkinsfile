@@ -38,7 +38,7 @@ pipeline {
 		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
 			echo 'post / changed'
-			echo 'Notifying Success to Developers'
+			echo 'Notifying Back to normal to Developers'
 			notifyBuild('SUCCESSFUL', false, true, 'Jenkins Build is back to normal')
 		}
 		failure {
@@ -67,7 +67,7 @@ pipeline {
 def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyEmail , String EmailSubjectStart = 'Build Failed in Jenkins') {
 	// build status of null means successful
 	buildStatus       = buildStatus ?: 'SUCCESSFUL'
-	NotifyBitbucket   = NotifyBitbucket ?: true
+	NotifyBitbucket   = NotifyBitbucket ? : false
 	NotifyEmail       = NotifyEmail ?: false
 	EmailSubjectStart = EmailSubjectStart ?: 'Build Failed in Jenkins'
 	echo 'buildStatus       = ' + buildStatus

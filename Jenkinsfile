@@ -9,7 +9,7 @@ pipeline {
 			steps {
 				bitbucketStatusNotify(buildState: 'INPROGRESS')
 				echo 'Notifying Starting to Developers'
-				notifyBuild('STARTED', true, false, 'Jenkins Build is Starting')
+				notifyBuild('STARTED', true, true, false, 'Jenkins Build is Starting')
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
 					bat(/"$ANT_HOME\bin\ant.bat" -version/)
@@ -38,19 +38,19 @@ pipeline {
 		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
 			echo 'Notifying Back to normal to Developers'
-			notifyBuild('SUCCESSFUL', false, true, 'Jenkins Build is back to normal')
+			notifyBuild('SUCCESSFUL', false, true, true, 'Jenkins Build is back to normal')
 		}
 		failure {
 			// Only run if the current Pipeline has a "failed" status, typically denoted in the web UI with a red indication.
 			echo 'Notifying Failure to Developers'
-			notifyBuild('FAILED', true, true, 'Build Failed in Jenkins')
+			notifyBuild('FAILED', true, true, true, 'Build Failed in Jenkins')
 		}
 		success {
 			// Only run if the current Pipeline has a "success" status, typically denoted in the web UI with a blue or green indication.
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
 			echo 'Notifying Success to Developers'
-			notifyBuild('SUCCESSFUL', true, true, 'Jenkins Build is Successfull')
+			notifyBuild('SUCCESSFUL', true, true, false, 'Jenkins Build is Successfull')
 		}
 //		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.
@@ -62,20 +62,22 @@ pipeline {
 
 }
 
-def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyEmail , String EmailSubjectStart = 'Build Failed in Jenkins') {
+def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat , NotifyEmail , String EmailSubjectStart = 'Build Failed in Jenkins') {
 	// build status of null means successful
 	buildStatus       = buildStatus ?: 'SUCCESSFUL'
 	NotifyBitbucket   = NotifyBitbucket ?: false
+	NotifyHipChat     = NotifyHipChat ?: false
 	NotifyEmail       = NotifyEmail ?: false
 	EmailSubjectStart = EmailSubjectStart ?: 'Build Failed in Jenkins'
 	echo 'buildStatus       = ' + buildStatus
 	echo 'NotifyBitbucket   = ' + NotifyBitbucket
+	echo 'NotifyHipChat     = ' + NotifyHipChat
 	echo 'NotifyEmail       = ' + NotifyEmail
 	echo 'EmailSubjectStart = ' + EmailSubjectStart
 	
 	// Default values
 	def colorName = 'RED'
-	def colorCode = '#FF0000'
+	def hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER} ${env.STATUS} after ${env.BUILD_DURATION}(${env.HIPCHAT_CHANGES_OR_CAUSE}) (<a href="${env.BUILD_URL}">View build</a>)"
 	def subject = "${EmailSubjectStart}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 	def summary = "${subject} (${env.BUILD_URL})"
 	def details = """<p>${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
@@ -86,19 +88,19 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyEmail , 
 	// Override default values based on build status
 	if (buildStatus == 'STARTED') {
 	color = 'YELLOW'
-	colorCode = '#FFFF00'
+	hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER} ${env.STATUS} (${env.HIPCHAT_CHANGES_OR_CAUSE}) (<a href="${env.BUILD_URL}">View build</a>)"
 	} else if (buildStatus == 'SUCCESSFUL') {
 	color = 'GREEN'
-	colorCode = '#00FF00'
+	hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER} ${env.STATUS} after ${env.BUILD_DURATION}(${env.HIPCHAT_CHANGES_OR_CAUSE}) (<a href="${env.BUILD_URL}">View build</a>)"
 	} else {
 	color = 'RED'
-	colorCode = '#FF0000'
 	}
 	
 	// Send notifications
-//	slackSend (color: colorCode, message: summary)
 	
-//	hipchatSend (color: color, notify: true, message: summary)
+	if (NotifyHipChat == true) {
+		hipchatSend (color: color, notify: true, message: hipchatmessage)
+	}
 
 	if (NotifyBitbucket == true) {
 		echo 'Notifying Build Status to Bitbucket'

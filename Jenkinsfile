@@ -78,8 +78,8 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat 
 	
 	// Default values
 	def colorName = 'RED'
-//	def hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER} ${env.STATUS} after ${env.BUILD_DURATION}(${env.HIPCHAT_CHANGES_OR_CAUSE}) (<a href="${env.BUILD_URL}">View build</a>)"
-	def hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER}"
+//	def hipchatmessage = "${env.JOB_NAME} ${env.BUILD_NUMBER} ${buildStatus} after ${env.BUILD_DURATION}(${env.HIPCHAT_CHANGES_OR_CAUSE}) (<a href="${env.BUILD_URL}">View build</a>)"
+	def hipchatmessage = "${env.JOB_NAME} ${env.BUILD_NUMBER} ${buildStatus}"
 	def hipchatsound = false
 	def subject = "${EmailSubjectStart}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 	def summary = "${subject} (${env.BUILD_URL})"

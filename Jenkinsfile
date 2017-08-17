@@ -39,7 +39,7 @@ pipeline {
 		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
 			echo 'Notifying Back to normal to Developers'
-			notifyBuild('SUCCESSFUL', false, true, true, 'Jenkins Build is back to normal')
+			notifyBuild('SUCCESSFUL', false, false, true, 'Jenkins Build is back to normal')
 		}
 		failure {
 			// Only run if the current Pipeline has a "failed" status, typically denoted in the web UI with a red indication.
@@ -79,7 +79,7 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat 
 	// Default values
 	def colorName = 'RED'
 //	def hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER} ${env.STATUS} after ${env.BUILD_DURATION}(${env.HIPCHAT_CHANGES_OR_CAUSE}) (<a href="${env.BUILD_URL}">View build</a>)"
-	def hipchatmessage = 'HipChat Message'
+	def hipchatmessage = "${env.JOB_NAME}"
 	def subject = "${EmailSubjectStart}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 	def summary = "${subject} (${env.BUILD_URL})"
 	def details = """<p>${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>

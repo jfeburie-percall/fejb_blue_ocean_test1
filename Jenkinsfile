@@ -9,7 +9,7 @@ pipeline {
 			steps {
 				bitbucketStatusNotify(buildState: 'INPROGRESS')
 				echo 'Notifying Starting to Developers'
-				notifyBuild('STARTED', true, true, 'Jenkins Build is Starting')
+//				notifyBuild('STARTED', true, true, 'Jenkins Build is Starting')
 				withEnv( ["ANT_HOME=${tool antVersion}"] ) {
 					echo 'ANT_HOME = ' + ANT_HOME
 					bat(/"$ANT_HOME\bin\ant.bat" -version/)
@@ -37,6 +37,7 @@ pipeline {
 //		}
 		changed {
 			// Only run if the current Pipeline run has a different status from the previously completed Pipeline.
+			echo 'post / changed'
 			echo 'Notifying Success to Developers'
 			notifyBuild('SUCCESSFUL', false, true, 'Jenkins Build is back to normal')
 		}
@@ -47,6 +48,7 @@ pipeline {
 		}
 		success {
 			// Only run if the current Pipeline has a "success" status, typically denoted in the web UI with a blue or green indication.
+			echo 'post / success'
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
 //			echo 'Notifying Success to Developers'

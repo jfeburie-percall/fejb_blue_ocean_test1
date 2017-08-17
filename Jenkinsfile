@@ -1,6 +1,7 @@
 pipeline {
 	environment {
 		def antVersion = 'Ant1.9.9'
+		def HipChatRoom = 'Percall Jenkins Test'
 	}
 
 	agent any
@@ -99,7 +100,7 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat 
 	// Send notifications
 	
 	if (NotifyHipChat == true) {
-		hipchatSend (color: color, notify: true, message: hipchatmessage)
+		hipchatSend (color: color, notify: true, message: hipchatmessage, room: HipChatRoom)
 	}
 
 	if (NotifyBitbucket == true) {

@@ -79,7 +79,8 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat 
 	// Default values
 	def colorName = 'RED'
 //	def hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER} ${env.STATUS} after ${env.BUILD_DURATION}(${env.HIPCHAT_CHANGES_OR_CAUSE}) (<a href="${env.BUILD_URL}">View build</a>)"
-	def hipchatmessage = "${env.JOB_NAME}"
+	def hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER}"
+	def hipchatsound = false
 	def subject = "${EmailSubjectStart}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 	def summary = "${subject} (${env.BUILD_URL})"
 	def details = """<p>${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
@@ -96,13 +97,14 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat 
 	// hipchatmessage = "${env.JOB_NAME} ${env.$BUILD_NUMBER} ${env.STATUS} after ${env.BUILD_DURATION}(${env.HIPCHAT_CHANGES_OR_CAUSE}) (<a href="${env.BUILD_URL}">View build</a>)"
 	} else {
 	color = 'RED'
+	hipchatsound = true
 	}
 	
 	// Send notifications
 	
 	if (NotifyHipChat == true) {
 		echo 'Notifying Build Status to HipChat Room'
-		hipchatSend (color: color, notify: true, message: hipchatmessage, room: HipChatRoom)
+		hipchatSend (color: color, notify: hipchatsound, message: hipchatmessage, room: HipChatRoom)
 	}
 
 	if (NotifyBitbucket == true) {

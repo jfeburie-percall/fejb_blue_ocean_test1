@@ -67,7 +67,7 @@ pipeline {
 def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyEmail , String EmailSubjectStart = 'Build Failed in Jenkins') {
 	// build status of null means successful
 	buildStatus       = buildStatus ?: 'SUCCESSFUL'
-	NotifyBitbucket   = NotifyBitbucket ? : false
+	NotifyBitbucket   = NotifyBitbucket ?: false
 	NotifyEmail       = NotifyEmail ?: false
 	EmailSubjectStart = EmailSubjectStart ?: 'Build Failed in Jenkins'
 	echo 'buildStatus       = ' + buildStatus

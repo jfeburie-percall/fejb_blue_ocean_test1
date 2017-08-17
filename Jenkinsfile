@@ -49,8 +49,8 @@ pipeline {
 			// Only run if the current Pipeline has a "success" status, typically denoted in the web UI with a blue or green indication.
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
-			echo 'Notifying Success to Bitbucket'
-			notifyBuild('SUCCESSFUL', false, false, 'Jenkins Build is Successfull')
+			echo 'Notifying Success to Developers'
+//			notifyBuild('SUCCESSFUL', false, false, 'Jenkins Build is Successfull')
 		}
 //		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.
@@ -64,10 +64,14 @@ pipeline {
 
 def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket = true , NotifyEmail = false , String EmailSubjectStart = 'Build Failed in Jenkins') {
 	// build status of null means successful
-	buildStatus       = buildStatus ?: 'SUCCESSFUL'
-	NotifyBitbucket   = NotifyBitbucket ?: true
-	NotifyEmail       = NotifyEmail ?: false
-	EmailSubjectStart = EmailSubjectStart ?: 'Build Failed in Jenkins'
+	buildStatus       = buildStatus ? : 'SUCCESSFUL'
+	NotifyBitbucket   = NotifyBitbucket ? : true
+	NotifyEmail       = NotifyEmail ? : false
+	EmailSubjectStart = EmailSubjectStart ? : 'Build Failed in Jenkins'
+	echo 'buildStatus       = ' + buildStatus
+	echo 'NotifyBitbucket   = ' + NotifyBitbucket
+	echo 'NotifyEmail       = ' + NotifyEmail
+	echo 'EmailSubjectStart = ' + EmailSubjectStart
 	
 	// Default values
 	def colorName = 'RED'

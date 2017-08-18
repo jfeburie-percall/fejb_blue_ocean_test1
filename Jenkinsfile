@@ -29,8 +29,8 @@ pipeline {
 					[branch: 'master'   , subPbranch: 'master'],
 					[branch: 'develop'  , subPbranch: 'dev'],
 				]
-				SubProjectBranchName = SubProjectBranch(BRANCH_NAME)
-				echo 'SubProjectBranch = ' + SubProjectBranchName
+				def SubProjectBranchName = SubProjectBranch(BRANCH_NAME)
+				echo 'SubProjectBranchName = ' + SubProjectBranchName
 			}
 		}
 		stage('Build') {

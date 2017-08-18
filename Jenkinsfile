@@ -2,6 +2,7 @@ pipeline {
 	environment {
 		def antVersion = 'Ant1.9.9'
 		def HipChatRoom = 'Percall Jenkins Test'
+		def EmailProjectRecipientList = 'jfeburie@percallgroup.com'
 	}
 
 	agent any
@@ -115,7 +116,8 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat 
 		emailext (
 			subject: subject,
 			body: details,
-			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+			to: EmailProjectRecipientList,
+			// recipientProviders: [[$class: 'DevelopersRecipientProvider']]
 		)
 	}
 }

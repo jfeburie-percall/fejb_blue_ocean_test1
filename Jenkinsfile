@@ -52,7 +52,7 @@ pipeline {
 			echo 'Build Sucessfull, Archiving Artifacts to Jenkins'
 			archiveArtifacts artifacts: 'build/*.zip'
 			echo 'Notifying Success to Developers'
-			notifyBuild('SUCCESSFUL', true, true, false, 'Jenkins Build is Successfull')
+			notifyBuild('SUCCESSFUL', true, true, true, 'Jenkins Build is Successfull')
 		}
 //		unstable {
 			// Only run if the current Pipeline has an "unstable" status, usually caused by test failures, code violations, etc. Typically denoted in the web UI with a yellow indication.

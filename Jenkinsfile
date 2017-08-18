@@ -23,6 +23,19 @@ pipeline {
 				echo 'env.WORKSPACE    = ' + env.WORKSPACE
 			}
 		}
+		stage('Collect Dependant Repos') {
+			steps {
+				def BranchToSubProject = [
+					[branch: 'master'   , subPbranch: 'master'],
+					[branch: 'develop'  , subPbranch: 'dev'],
+				]
+				def SubProjectBranch(String branchName) {
+					BranchToSubProject.find { it['branch'] ==  branchName }?.get("subPbranch")
+				}
+				SubProjectBranchName = SubProjectBranch(BRANCH_NAME)
+				echo 'SubProjectBranch = ' + SubProjectBranchName
+			}
+		}
 		stage('Build') {
 			steps {
 				echo 'Starting Build'

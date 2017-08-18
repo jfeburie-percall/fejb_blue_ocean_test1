@@ -29,9 +29,6 @@ pipeline {
 					[branch: 'master'   , subPbranch: 'master'],
 					[branch: 'develop'  , subPbranch: 'dev'],
 				]
-				def SubProjectBranch(String branchName) {
-					BranchToSubProject.find { it['branch'] ==  branchName }?.get("subPbranch")
-				}
 				SubProjectBranchName = SubProjectBranch(BRANCH_NAME)
 				echo 'SubProjectBranch = ' + SubProjectBranchName
 			}
@@ -75,6 +72,10 @@ pipeline {
 //		}
 	}
 
+}
+
+def SubProjectBranch(String branchName) {
+	BranchToSubProject.find { it['branch'] ==  branchName }?.get("subPbranch")
 }
 
 def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat , NotifyEmail , String EmailSubjectStart = 'Build Failed in Jenkins') {

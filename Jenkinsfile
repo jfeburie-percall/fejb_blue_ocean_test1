@@ -3,8 +3,8 @@ pipeline {
 		def antVersion = 'Ant1.9.9'
 		def HipChatRoom = 'Percall Jenkins Test'
 		def EmailProjectRecipientList = 'jfeburie@percallgroup.com'
-		def SubProjectName = fejb_blue_ocean_test2
-		def SubProjectGitUrl = git@github.com:jfeburie-percall/fejb_blue_ocean_test2.git
+		def SubProjectName = 'fejb_blue_ocean_test2'
+		def SubProjectGitUrl = 'git@github.com:jfeburie-percall/fejb_blue_ocean_test2.git'
 	}
 
 	agent any

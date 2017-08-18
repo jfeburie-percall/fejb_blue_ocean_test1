@@ -3,6 +3,10 @@ pipeline {
 		def antVersion = 'Ant1.9.9'
 		def HipChatRoom = 'Percall Jenkins Test'
 		def EmailProjectRecipientList = 'jfeburie@percallgroup.com'
+		def BranchToSubProject = [
+			[branch: 'master'   , subPbranch: 'master'],
+			[branch: 'develop'  , subPbranch: 'dev']
+		]
 	}
 
 	agent any
@@ -25,10 +29,6 @@ pipeline {
 		}
 		stage('Collect Dependant Repos') {
 			steps {
-				def BranchToSubProject = [
-					[branch: 'master'   , subPbranch: 'master'],
-					[branch: 'develop'  , subPbranch: 'dev']
-				]
 				def SubProjectBranchName = SubProjectBranch(BRANCH_NAME)
 				echo 'SubProjectBranch = ' + SubProjectBranchName
 			}

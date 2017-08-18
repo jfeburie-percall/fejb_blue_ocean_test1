@@ -3,7 +3,6 @@ pipeline {
 		def antVersion = 'Ant1.9.9'
 		def HipChatRoom = 'Percall Jenkins Test'
 		def EmailProjectRecipientList = 'jfeburie@percallgroup.com'
-		def BranchToSubProject = [[branch: 'master'   , subPbranch: 'master'],[branch: 'develop'  , subPbranch: 'dev']]
 		def SubProjectBranchName = SubProjectBranch(BRANCH_NAME)
 	}
 
@@ -72,6 +71,7 @@ pipeline {
 }
 
 def SubProjectBranch(String branchName) {
+	def BranchToSubProject = [[branch: 'master'   , subPbranch: 'master'],[branch: 'develop'  , subPbranch: 'dev']]
 	BranchToSubProject.find { it['branch'] ==  branchName }?.get("subPbranch")
 }
 

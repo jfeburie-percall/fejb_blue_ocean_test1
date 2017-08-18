@@ -3,7 +3,8 @@ pipeline {
 		def antVersion = 'Ant1.9.9'
 		def HipChatRoom = 'Percall Jenkins Test'
 		def EmailProjectRecipientList = 'jfeburie@percallgroup.com'
-		// def SubProjectBranchName = SubProjectBranch(BRANCH_NAME)
+		def SubProjectName = fejb_blue_ocean_test2
+		def SubProjectGitUrl = git@github.com:jfeburie-percall/fejb_blue_ocean_test2.git
 	}
 
 	agent any
@@ -27,6 +28,9 @@ pipeline {
 		stage('Collect Dependant Repos') {
 			steps {
 				echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
+				dir ('dependencies/'SubProjectName) {
+					deletedir()
+				}
 			}
 		}
 		stage('Build') {

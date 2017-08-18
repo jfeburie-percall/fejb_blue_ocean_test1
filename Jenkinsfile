@@ -28,7 +28,7 @@ pipeline {
 		stage('Collect Dependant Repos') {
 			steps {
 				echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
-				dir ('dependencies/'SubProjectName) {
+				dir ('dependencies/' + SubProjectName) {
 					deletedir()
 				}
 			}

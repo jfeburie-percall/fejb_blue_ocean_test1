@@ -30,7 +30,7 @@ pipeline {
 				echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
 				dir ('dependencies/' + SubProjectName) {
 					deleteDir()
-					git url: SubProjectGitUrl
+					git url: SubProjectGitUrl, branch: SubProjectBranch(BRANCH_NAME), credentialsId: : '58920f19-99a7-415b-911a-5172714ee395'
 				}
 			}
 		}

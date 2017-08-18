@@ -27,10 +27,10 @@ pipeline {
 			steps {
 				def BranchToSubProject = [
 					[branch: 'master'   , subPbranch: 'master'],
-					[branch: 'develop'  , subPbranch: 'dev'],
+					[branch: 'develop'  , subPbranch: 'dev']
 				]
 				def SubProjectBranchName = SubProjectBranch(BRANCH_NAME)
-				echo 'SubProjectBranchName = ' + SubProjectBranchName
+				echo 'SubProjectBranch = ' + SubProjectBranchName
 			}
 		}
 		stage('Build') {

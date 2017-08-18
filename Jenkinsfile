@@ -29,7 +29,7 @@ pipeline {
 			steps {
 				echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
 				dir ('dependencies/' + SubProjectName) {
-					deletedir()
+					deleteDir()
 				}
 			}
 		}

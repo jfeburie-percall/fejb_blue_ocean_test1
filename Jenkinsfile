@@ -117,7 +117,7 @@ def notifyBuild(String buildStatus = 'STARTED', NotifyBitbucket , NotifyHipChat 
 			subject: subject,
 			body: details,
 			to: EmailProjectRecipientList,
-			// recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+			recipientProviders: [[$class: 'DevelopersRecipientProvider']]
 		)
 	}
 }

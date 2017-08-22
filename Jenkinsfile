@@ -41,15 +41,16 @@ pipeline {
 			}
 		}
 		stage('Collect Dependant Repos') {
+			when {
+				not {
+					environment name: 'SubProjectName', value: 'sub-project-name'
+				}
+			}
 			steps {
-				if (SubProjectName != 'sub-project-name' ) { 
-					echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
-					dir ('dependencies/' + SubProjectName) {
-						deleteDir()
-						git url: SubProjectGitUrl, branch: SubProjectBranch(BRANCH_NAME)
-					}
-				} else {
-					echo 'No dependant project to checkout'
+				echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
+				dir ('dependencies/' + SubProjectName) {
+					deleteDir()
+					git url: SubProjectGitUrl, branch: SubProjectBranch(BRANCH_NAME)
 				}
 			}
 		}

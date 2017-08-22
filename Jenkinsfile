@@ -1,8 +1,23 @@
 pipeline {
 	environment {
+		/*
+		PARAMETERS :
+		"HipChatRoom" 				: Type the HipChatRoom name below
+		"EmailProjectRecipientList" : Type the email adresses of people to notify when build fails separated by coma
+		*/
+		
 		def antVersion = 'Ant1.9.9'
 		def HipChatRoom = 'Percall Jenkins Test'
 		def EmailProjectRecipientList = 'jfeburie@percallgroup.com'
+
+		/*
+		Required Parameters only if any subproject is required : (uncomment lines 38 to 47)
+		"SubProjectName" 			: type the sub-project name that will serve as sub-directory name (replace "sub-project-name" by your project name in bitbucket)
+		"SubProjectGitUrl" 			: type the git url of the git repos to clone. 
+			example : https://ci_percall@bitbucket.org/percall/teamcenter-deployment-scripts.git
+			(replace "sub-project-name" by your project name in bitbucket)
+		*/
+
 		def SubProjectName = 'fejb_blue_ocean_test2'
 		def SubProjectGitUrl = 'https://github.com/jfeburie-percall/fejb_blue_ocean_test2.git'
 	}
@@ -26,12 +41,16 @@ pipeline {
 			}
 		}
 		stage('Collect Dependant Repos') {
-			steps {
-				echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
-				dir ('dependencies/' + SubProjectName) {
-					deleteDir()
-					git url: SubProjectGitUrl, branch: SubProjectBranch(BRANCH_NAME)
+			if (buildStatus != 'sub-project-name' ) { 
+				steps {
+					echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
+					dir ('dependencies/' + SubProjectName) {
+						deleteDir()
+						git url: SubProjectGitUrl, branch: SubProjectBranch(BRANCH_NAME)
+					}
 				}
+			} else {
+				echo 'No dependant project to checkout'
 			}
 		}
 		stage('Build') {
@@ -76,6 +95,9 @@ pipeline {
 }
 
 def SubProjectBranch(String branchName) {
+	/*
+	If the branches doesn't correspond, type the branch mapping between parent project and sub-project
+	*/
 	def BranchToSubProject = [
 		[branch: 'master'   , subPbranch: 'master'],
 		[branch: 'develop'  , subPbranch: 'dev']

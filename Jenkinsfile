@@ -42,7 +42,7 @@ pipeline {
 		}
 		stage('Collect Dependant Repos') {
 			steps {
-				if (buildStatus != 'sub-project-name' ) { 
+				if (SubProjectName != 'sub-project-name' ) { 
 					echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
 					dir ('dependencies/' + SubProjectName) {
 						deleteDir()

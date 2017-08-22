@@ -41,16 +41,16 @@ pipeline {
 			}
 		}
 		stage('Collect Dependant Repos') {
-			if (buildStatus != 'sub-project-name' ) { 
-				steps {
+			steps {
+				if (buildStatus != 'sub-project-name' ) { 
 					echo 'SubProjectBranchName = ' + SubProjectBranch(BRANCH_NAME)
 					dir ('dependencies/' + SubProjectName) {
 						deleteDir()
 						git url: SubProjectGitUrl, branch: SubProjectBranch(BRANCH_NAME)
 					}
+				} else {
+					echo 'No dependant project to checkout'
 				}
-			} else {
-				echo 'No dependant project to checkout'
 			}
 		}
 		stage('Build') {
